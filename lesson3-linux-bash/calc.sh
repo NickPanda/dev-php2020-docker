@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 pattern='^[[:digit:]]+$'
 if ! [[ $1 =~ $pattern ]] || ! [[ $2 =~ $pattern ]] ; then
