@@ -1,0 +1,27 @@
+# redis-server
+7152:C 16 Feb 2020 19:04:41.714 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+7152:C 16 Feb 2020 19:04:41.714 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=7152, just started
+7152:C 16 Feb 2020 19:04:41.714 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 5.0.7 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 7152
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+7152:M 16 Feb 2020 19:04:41.718 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+7152:M 16 Feb 2020 19:04:41.718 # Server initialized
+7152:M 16 Feb 2020 19:04:41.718 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+7152:M 16 Feb 2020 19:04:41.720 * DB loaded from disk: 0.000 seconds
+7152:M 16 Feb 2020 19:04:41.721 * Ready to accept connections
