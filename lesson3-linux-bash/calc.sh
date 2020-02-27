@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 
-pattern='^[[:digit:]]+$'
-if ! [[ $1 =~ $pattern ]] || ! [[ $2 =~ $pattern ]] ; then
-   echo "Ошибка: Параметр не является числом"
+pattern='^[-+]?[0-9]+.?[0-9]*?$'
+
+if ! [[ $1 ]] || ! [[ $2 ]] ; then
+    echo "Ошибка: Обязательные параметры не были переданы"
     exit 1
 fi
 
-let "c = $1 + $2"
-echo $c
+if ! [[ $1 =~ $pattern ]] || ! [[ $2 =~ $pattern ]] ; then
+    echo "Ошибка: Параметр не является числом"
+    exit 1
+fi
+
+echo $1 + $2 | bc
+
+exit 0
