@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-    sed '1d' table_city |
-    cut -d ' ' -f3,5- | sort | uniq -c | 
-    sort -r |
-    awk '{$1=$1};1' | 
-    head -n3
+cat table_city |
+awk '$3!="city" {print $3}' |
+sort |
+uniq -c |
+sort --key 1nr --key 2 |
+head -n 3
