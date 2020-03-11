@@ -15,7 +15,6 @@ services:
     networks:
       - backend-php
 
-      ### Networks Setup ############################################
 networks:
   backend-php:
     driver: "bridge"
