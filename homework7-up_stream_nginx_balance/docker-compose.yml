@@ -1,0 +1,63 @@
+version: '3'
+services:
+    # php_fpm
+    php_fpm_one:
+        build: ./php-fpm/one
+        volumes:
+            - ./www:/var/www/:rw
+        networks:
+            - backend-php
+    php_fpm_two:
+        build: ./php-fpm/two
+        volumes:
+            - ./www:/var/www/:rw
+        networks:
+            - backend-php
+    php_fpm_three:
+        build: ./php-fpm/three
+        volumes:
+            - ./www:/var/www/:rw
+        networks:
+            - backend-php
+    php_fpm_four:
+        build: ./php-fpm/four
+        volumes:
+            - ./www:/var/www/:rw
+        networks:
+            - backend-php
+  # nginx
+    nginx_base:
+        build: ./nginx/base
+        ports:
+         - "80:80"
+        networks:
+         - backend-php
+
+    nginx_one:
+        build: ./nginx/one
+        volumes:
+         - ./www:/var/www:ro
+        networks:
+         - backend-php
+    nginx_two:
+       build: ./nginx/two
+       volumes:
+        - ./www:/var/www:ro
+       networks:
+        - backend-php
+    nginx_three:
+       build: ./nginx/three
+       volumes:
+        - ./www:/var/www:ro
+       networks:
+        - backend-php
+    nginx_four:
+       build: ./nginx/four
+       volumes:
+        - ./www:/var/www:ro
+       networks:
+        - backend-php
+        
+networks:
+  backend-php:
+    driver: "bridge"
