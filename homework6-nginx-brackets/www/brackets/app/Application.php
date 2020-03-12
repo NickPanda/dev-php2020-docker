@@ -24,11 +24,10 @@ class Application
             if (!isset($_POST['string'])) {
                 throw new Exception('Не передан параметр string!');
             }
-            $string = $_POST['string'];
-            if (!$string) {
+            if (!$_POST['string']) {
                 throw new Exception('Передана пустая строка!');
             }
-            $result = BracketsValidate::checkingStringBrackets($string);
+            $result = BracketsValidate::checkingStringBrackets($_POST['string']);
 
             if (!$result) {
                 throw new Exception('Строка не валидная!');

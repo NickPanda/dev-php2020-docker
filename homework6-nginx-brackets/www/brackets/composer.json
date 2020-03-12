@@ -8,6 +8,7 @@
         }
     },
     "require": {
+        "php": "~7.3",
         "nickpanda/dev2020_hometask6_brackets": "^1.0"
     }
 }
