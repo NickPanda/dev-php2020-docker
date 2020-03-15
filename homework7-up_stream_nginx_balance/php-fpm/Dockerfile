@@ -1,4 +1,5 @@
-FROM php:7.4-fpm
+ARG PHP_VERSION
+FROM php:$PHP_VERSION-fpm
 
 RUN apt update && apt install -y \
     git \
