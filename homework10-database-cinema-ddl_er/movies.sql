@@ -6,9 +6,10 @@ CREATE TABLE public.movies (
 	id int4 NOT NULL GENERATED ALWAYS AS IDENTITY,
 	"name" varchar NULL,
 	duration int4 NULL, -- время в минутах
-	age_rating int4 NULL, -- возратсной рейтинг
+	age_rating int2 NULL, -- возратсной рейтинг
 	CONSTRAINT movies_pk PRIMARY KEY (id)
 );
+COMMENT ON TABLE public.movies IS 'Фильмы';
 
 -- Column comments
 
