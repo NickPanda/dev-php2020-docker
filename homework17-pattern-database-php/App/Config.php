@@ -18,6 +18,10 @@ class Config {
 
         (Dotenv::createImmutable(dirname(__DIR__) , '/.env'))->load();
 
+        if(!getenv('DB_DRIVER')) {
+            throw new \Exception('В файле .env отсутствует "DB_DRIVER".');
+        }
+
         if(!getenv('DB_HOST')) {
             throw new \Exception('В файле .env отсутствует "DB_HOST".');
         }
