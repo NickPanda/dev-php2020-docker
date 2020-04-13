@@ -4,6 +4,11 @@ namespace App;
 
 use Dotenv\Dotenv;
 
+/**
+ * Класс Config
+ * 
+ * @package App
+ */
 class Config {
 
     public static function checkEnv() {
@@ -32,17 +37,5 @@ class Config {
         if(!getenv('DB_PASSWORD')) {
             throw new \Exception('В файле .env отсутствует "DB_PASSWORD".');
         }        
-    }
-
-    public static function getDbh() {
-        self::checkEnv();
-        $DSN = 'pgsql:';
-        $DSN .= 'host='.getenv('DB_HOST').';';
-        $DSN .= 'port='.getenv('DB_PORT').';';
-        $DSN .= 'dbname='.getenv('DB_NAME').';';
-        $DSN .= 'user='.getenv('DB_USER').';';
-        $DSN .= 'password='.getenv('DB_PASSWORD');
-
-        return new \PDO($DSN);
     }
 }

@@ -2,22 +2,28 @@
 
 namespace App;
 
+/**
+ * Класс Pages
+ * 
+ * @package App
+ */
 class Pages {
 
     public function list(Application $app) {
-        $dbh = Config::getDbh();
+        $dbh = DB::getDbh();
         $movies = Movie::getAll($dbh);
 
-        if (!empty($movies)) {
-            print 'Всего: '.count($movies)." фильмов\n";
+        if (empty($movies)) {
+            Message::writeStdOut('Всего: '.count($movies).' фильмов');
             foreach($movies as $movie) {
-                print sprintf("Название фильма (%s+): %s. Продолжительность: %s минут. \n", 
-                $movie['age_rating'], 
-                $movie['name'],
-                $movie['duration']);
+                Message::writeStdOut(
+                    sprintf('Название фильма (%s+): %s. Продолжительность: %s минут. ', 
+                        $movie['age_rating'], 
+                        $movie['name'],
+                        $movie['duration']));
             }
         } else {
-            print "Фильмов нет";
+            Message::writeStdOut('Фильмов нет');
         }
     }
 
@@ -26,20 +32,21 @@ class Pages {
         if (!$id || !ctype_digit($id)) {
             throw new \Exception('передан не верный id');
         }
-        $dbh = Config::getDbh();
+        $dbh = DB::getDbh();
         $movie = Movie::getById($dbh, $id);
         if ($movie) {
-            print sprintf('Название фильма (%s+): %s. Продолжительность: %s минут.', 
-            $movie['age_rating'], 
-            $movie['name'],
-            $movie['duration']);
+            Message::writeStdOut(
+                sprintf('Название фильма (%s+): %s. Продолжительность: %s минут.', 
+                    $movie['age_rating'], 
+                    $movie['name'],
+                    $movie['duration']));
         } else {
-            print "Фильм не найден";
+             Message::writeStdOut('Фильм не найден');
         }
     }
 
     public function add(Application $app) {
-        $dbh = Config::getDbh();
+        $dbh = DB::getDbh();
 
         $fields = ['Белый клык', '123', '18'];
         if (!Movie::insert($dbh, $fields)) {
@@ -52,7 +59,7 @@ class Pages {
         if (!$id || !ctype_digit($id)) {
             throw \Exception('передан не верный id');
         }
-        $dbh = Config::getDbh();
+        $dbh = DB::getDbh();
         $fields = [
             'name' => 'Фильм'.$id, 
             'duration' => rand(45, 220),
@@ -68,7 +75,7 @@ class Pages {
         if (!$id || !ctype_digit($id)) {
             throw \Exception('передан не верный id');
         }
-        $dbh = Config::getDbh();
+        $dbh = DB::getDbh();
         if (!Movie::deleteById($dbh, $id)) {
             throw new \Exception('Запись не была удалена!');
         }

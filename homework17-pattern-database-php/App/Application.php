@@ -2,7 +2,11 @@
 
 namespace App;
 
-
+/**
+ * Класс Application
+ * 
+ * @package App
+ */
 class Application {
 
     /**
@@ -12,12 +16,19 @@ class Application {
 
      public function run() {
 
-        $pages = ['list', 'item'];
+        Config::checkEnv();
+
+        $allowedPages = ['list', 'item', 'add', 'edit', 'delete'];
 
         $this->getOptions();
         $page =  $this->getPage();
         if (!$page) {
-            throw \Exception('не указана страница');
+            throw new \Exception('не указана страница');
+        }
+
+        if (!in_array($page, $allowedPages)){
+            throw new \Exception('Страница не найдена');
+
         }
 
         $pages = new Pages();
