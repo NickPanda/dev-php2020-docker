@@ -2,6 +2,11 @@
 
 namespace App;
 
+/**
+ * Класс Movie
+ * 
+ * @package App
+ */
 class Movie {
 
     /**
