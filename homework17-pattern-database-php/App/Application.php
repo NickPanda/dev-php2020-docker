@@ -17,6 +17,7 @@ class Application {
      public function run() {
 
         Config::checkEnv();
+        Config::initPhpErrors();
 
         $allowedPages = ['list', 'item', 'add', 'edit', 'delete'];
 

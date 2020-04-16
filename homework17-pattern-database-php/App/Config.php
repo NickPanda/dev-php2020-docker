@@ -11,6 +11,19 @@ use Dotenv\Dotenv;
  */
 class Config {
 
+    /**
+     * Инициализация PHP Errors
+     */
+    public static function initPhpErrors() {
+        $errRep = getenv('E_ALL') ?: 'E_ALL';
+        $dispErr = getenv('DISP_ERR') ?: 1;
+        $dispStartErr = getenv('DISP_START_ERR') ?: 1;
+
+        ini_set('error_reporting', $errRep);
+        ini_set('display_errors', $dispErr);
+        ini_set('display_startup_errors', $dispStartErr);
+    }
+
     public static function checkEnv() {
        if (!file_exists(dirname(__DIR__) . '/.env')) {
             throw new \RuntimeException('Отсутствует файл окружения .env.');
