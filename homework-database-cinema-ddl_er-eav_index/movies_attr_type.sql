@@ -6,7 +6,6 @@ CREATE TABLE public.movies_attr_type (
 	id int4 NOT NULL GENERATED ALWAYS AS IDENTITY,
 	"name" varchar NULL,
 	slug varchar NULL,
-	description varchar NULL,
 	CONSTRAINT movies_attr_type_pk PRIMARY KEY (id)
 );
 
