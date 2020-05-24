@@ -1,4 +1,4 @@
-# Запросы на 100000 записей (у установкой индексов)
+# Запросы на 100000 записей (c установкой индексов)
 
 ## Простые запросы
 
@@ -6,7 +6,7 @@
 EXPLAIN analyse SELECT id from public.seances s where s.format = '2D';
 ```
 
-Добавлен индекс на format
+Добавлен индекс на format. Причина из-за фильтрации по этому полю (where).
 
 ```sql
 CREATE INDEX seances_format_idx ON public.seances (format);
@@ -26,7 +26,7 @@ Execution Time: 12.020 ms
 EXPLAIN analyse SELECT id from public.movies m where m.age_rating < 18;
 ```
 
-Добавлен индекс на age_rating
+Добавлен индекс на age_rating. Причина из-за фильтрации по этому полю (where).
 
 ```sql
 CREATE INDEX movies_age_rating_idx ON public.movies (age_rating);
@@ -40,7 +40,7 @@ Planning Time: 0.278 ms
 Execution Time: 34.567 ms
 ```
 
-Добавлен индекс на duration
+Добавлен индекс на duration. Причина из-за фильтрации по этому полю (where).
 
 ```sql
 CREATE INDEX movies_duration_idx ON public.movies USING btree (duration);
@@ -58,12 +58,11 @@ Planning Time: 0.136 ms
 Execution Time: 27.151 ms
 ```
 
-Добавлен индекс на duration
+Добавлен индекс на price. Причина из-за фильтрации по этому полю (where).
 
 ```sql
 CREATE INDEX tariffs_price_idx ON public.tariffs USING btree (price);
 ```
-
 
 ```sql
 EXPLAIN analyse SELECT id, "name" from public.tariffs t where t.price < 300;
@@ -79,7 +78,10 @@ Execution Time: 21.626 ms
 
 ## "Сложные" запросы
 
-Добавлены индексы на matv.movie_id, matv.attr_id, ma.type_id
+Добавлены индексы на matv.movie_id, matv.attr_id, ma.type_id.
+Причины
+ - фильтрации по этому полю (where)
+ - join по этим полям
 
 ```sql
 CREATE INDEX seances_date_idx ON public.seances ("date");
