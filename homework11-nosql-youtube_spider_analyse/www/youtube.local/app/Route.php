@@ -30,10 +30,6 @@ class Route
     public function init(): void
     {
 
-        $this->router->respond('GET', '/', static function () {
-            return (new ChannelController())->index();
-        });
-
         $this->router->respond('GET', '/spider', static function () {
             return (new ChannelController())->spider();
         });

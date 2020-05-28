@@ -16,44 +16,6 @@ class ChannelController
 {
 
     /**
-     * Главная страница с доступными методами.
-     * 
-     * /index
-     */
-    public function index() {
-
-        $allowedMethods = [
-                [
-                    'method' => 'GET',
-                    'uri' => '/spider',
-                    'description' => '"Паук" для получения и сохранения данных с YouTube',
-                ],
-                [
-                    'method' => 'GET',
-                    'uri' => '/statistics-channel-videos',
-                    'description' => 'Суммарное кол-во лайков и дизлайков всех видео на канале',
-                ],
-                [
-                    'method' => 'GET',
-                    'uri' => '/top-channels',
-                    'description' => 'ТОП каналов с лучшим соотношением кол-во лайков/кол-во дизлайков',
-                ],
-                [
-                    'method' => 'DELETE',
-                    'uri' => '/channels',
-                    'description' => 'Удаление каналов из БД',
-
-                ],
-        ];
-
-        try {
-            return ResponseMessage::success(json_encode($allowedMethods, JSON_THROW_ON_ERROR));
-        } catch (\JsonException $e) {
-            return ResponseMessage::error($e->getMessage());
-        }    
-    }
-
-    /**
      * "Паук" для получения и сохранения данных с YouTube.
      * 
      * Сбор списка каналов, видео с каналов и кол-во лайков/дизлайков (статистика видео).

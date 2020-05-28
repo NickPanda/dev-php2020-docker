@@ -12,38 +12,6 @@ class EventController
 {
 
     /**
-     * Главная страница с доступными методами.
-     * 
-     * /index
-     */
-    public function index() {
-
-        $allowedMethods = [
-                [
-                    'method' => 'GET',
-                    'uri' => '/events',
-                    'description' => 'Выборка наиболее подходящего событие по params',
-                ],
-                [
-                    'method' => 'GET',
-                    'uri' => '/event/add',
-                    'description' => 'Добавления события в систему',
-                ],
-                [
-                    'method' => 'DELETE',
-                    'uri' => '/events/delete',
-                    'description' => 'Очистка всех доступны событий',
-                ],
-        ];
-
-        try {
-            return ResponseMessage::success(json_encode($allowedMethods, JSON_THROW_ON_ERROR));
-        } catch (\JsonException $e) {
-            return ResponseMessage::error($e->getMessage());
-        }    
-    }
-
-    /**
      * Выборка наиболее подходящего событие по params.
      * 
      * @param Request $request

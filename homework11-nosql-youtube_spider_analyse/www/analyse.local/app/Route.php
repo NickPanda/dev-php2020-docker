@@ -30,10 +30,6 @@ class Route
     public function init(): void
     {
 
-        $this->router->respond('GET', '/', static function () {
-            return (new EventController())->index();
-        });
-
         $this->router->respond('GET', '/events', static function ($request) {
             return (new EventController)->itemByParams($request);
         });
