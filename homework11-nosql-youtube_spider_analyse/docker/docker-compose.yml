@@ -17,11 +17,13 @@ services:
       - backend-php
 
   mongo:
+    env_file:
+      - mongo.env
     image: mongo
     container_name: 'mongo'
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: secret
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     ports:
     - '27017-27019:27017-27019'
     links:
