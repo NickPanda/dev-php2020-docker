@@ -5,6 +5,8 @@ namespace App;
 use Exception;
 use Dotenv\Dotenv;
 
+use RuntimeException;
+
 use App\Route;
 
 /**
