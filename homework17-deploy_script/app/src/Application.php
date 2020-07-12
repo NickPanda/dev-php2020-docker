@@ -25,7 +25,7 @@ class Application
                 throw new Exception('Передана пустая строка!');
             }
 
-            $count = $_GET['count'] ?? 10;
+            $count = $_GET['count'] ?? 11;
             
             for($i=0; $i<$count; $i++) {
                 Message::writeOutput($_GET['string'].'<br>');
