@@ -37,3 +37,12 @@ jobs:
       run: |
         cd  ./homework17-deploy_script
         docker-compose exec php-fpm sh ./deploy_app.sh
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@4.0
+      with:
+        switches: -avzr --delete --exclude="vendor" --exclude=".git"
+        path: ./
+        remote_path: /home/Otus
+        remote_host: localhost.ru
+        remote_user: otus
+        remote_key: PRIVATE_KEY
