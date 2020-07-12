@@ -13,30 +13,12 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-    - name: pwd folder
-      run: pwd
-    - name: Cd App folder
-      run: cd  ./homework17-deploy_script
-    - name: Data Pull
-      run: |
-        cd  ./homework17-deploy_script
-        git pull origin homework17-deploy_script
     - name: Docker Build
       run: |
         cd  ./homework17-deploy_script
         docker-compose build
-    - name: Docker Down
-      run: |
-        cd  ./homework17-deploy_script
         docker-compose down
-    - name: Docker Up Daemon
-      run: |
-        cd  ./homework17-deploy_script
         docker-compose up -d
-    - name: Exec deploy_app inside docker-container
-      run: |
-        cd  ./homework17-deploy_script
-        docker-compose exec php-fpm sh ./deploy_app.sh
     - name: rsync deployments
       uses: burnett01/rsync-deployments@4.0
       with:
