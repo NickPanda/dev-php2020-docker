@@ -1,4 +1,4 @@
-name: DeployApp
+name: DeployApp_actions
 
 on:
   push:
@@ -13,15 +13,27 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+    - name: pwd folder
+      run: pwd
     - name: Cd App folder
       run: cd  ./homework17-deploy_script
     - name: Data Pull
-      run: git pull
+      run: |
+        cd  ./homework17-deploy_script
+        git pull origin homework17-deploy_script
     - name: Docker Build
-      run: docker-compose build
+      run: |
+        cd  ./homework17-deploy_script
+        docker-compose build
     - name: Docker Down
-      run: docker-compose down
+      run: |
+        cd  ./homework17-deploy_script
+        docker-compose down
     - name: Docker Up Daemon
-      run: docker-compose up -d
+      run: |
+        cd  ./homework17-deploy_script
+        docker-compose up -d
     - name: Exec deploy_app inside docker-container
-      run: docker-compose exec php-fpm bash ./deploy_app.sh
+      run: |
+        cd  ./homework17-deploy_script
+        docker-compose exec php-fpm sh ./deploy_app.sh
