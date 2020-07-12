@@ -18,9 +18,13 @@ jobs:
     - name: Cd App folder
       run: cd  ./homework17-deploy_script
     - name: Data Pull
-      run: git pull
+      run: |
+        cd  ./homework17-deploy_script
+        git pull
     - name: Docker Build
-      run: docker-compose build
+      run: |
+         cd  ./homework17-deploy_script
+         docker-compose build
     - name: Docker Down
       run: docker-compose down
     - name: Docker Up Daemon
