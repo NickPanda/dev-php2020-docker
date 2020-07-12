@@ -26,7 +26,7 @@ class Application
             }
 
             $count = $_GET['count'] ?? 6;
-
+            
             for($i=0; $i<$count; $i++) {
                 Message::writeOutput($_GET['string'].'<br>');
             }
