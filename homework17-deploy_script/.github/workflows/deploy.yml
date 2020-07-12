@@ -1,0 +1,27 @@
+name: DeployApp
+
+on:
+  push:
+    branches: [ homework17-deploy_script ]
+  pull_request:
+    branches: [ homework17-deploy_script ]
+
+jobs:
+  deploy_app:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cd App folder
+      run: cd  ./homework17-deploy_script
+    - name: Data Pull
+      run: git pull
+    - name: Docker Build
+      run: docker-compose build
+    - name: Docker Down
+      run: docker-compose down
+    - name: Docker Up Daemon
+      run: docker-compose up -d
+    - name: Exec deploy_app inside docker-container
+      run: docker-compose exec php-fpm bash ./deploy_app.sh
