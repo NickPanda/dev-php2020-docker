@@ -13,6 +13,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+    - name: pwd folder
+      run: pwd
     - name: Cd App folder
       run: cd  ./homework17-deploy_script
     - name: Data Pull
