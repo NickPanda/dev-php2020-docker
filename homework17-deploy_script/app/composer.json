@@ -1,0 +1,14 @@
+{
+    "name": "nickpanda/dev2020_homework17_deploying",
+    "description": "Homework App for Script Deploying",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "php": "~7.4",
+        "phpunit/phpunit": "^9"
+    }
+}
