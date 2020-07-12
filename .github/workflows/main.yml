@@ -36,4 +36,5 @@ jobs:
     - name: Exec deploy_app inside docker-container
       run: |
         cd  ./homework17-deploy_script
+        export COMPOSE_INTERACTIVE_NO_CLI=1
         docker-compose exec php-fpm sh ./deploy_app.sh
