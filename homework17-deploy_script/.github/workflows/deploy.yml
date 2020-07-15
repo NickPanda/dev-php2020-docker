@@ -19,6 +19,10 @@ jobs:
         docker-compose build
         docker-compose down
         docker-compose up -d
+        
+    - name: Execute tests
+      run: vendor/bin/phpunit ./tests/GenerateTest.php
+
     - name: rsync deployments
       uses: burnett01/rsync-deployments@4.0
       with:
