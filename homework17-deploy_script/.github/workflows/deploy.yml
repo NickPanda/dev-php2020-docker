@@ -10,7 +10,7 @@ jobs:
   deploy_app:
 
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v2
     - name: Docker Build
@@ -19,9 +19,11 @@ jobs:
         docker-compose build
         docker-compose down
         docker-compose up -d
-        
-    - name: Execute tests
-      run: vendor/bin/phpunit ./tests/GenerateTest.php
+
+    - name: composer update + Execute tests
+      run: |
+        composer update
+        vendor/bin/phpunit ./tests/
 
     - name: rsync deployments
       uses: burnett01/rsync-deployments@4.0
