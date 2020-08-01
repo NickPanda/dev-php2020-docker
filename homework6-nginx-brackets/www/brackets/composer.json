@@ -1,0 +1,14 @@
+{
+    "name": "nickpanda/dev2020_hometask6_brackets_app",
+    "description": "Hometask Brackets App",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "php": "~7.3",
+        "nickpanda/dev2020_hometask6_brackets": "^1.0"
+    }
+}

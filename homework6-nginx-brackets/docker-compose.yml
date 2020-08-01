@@ -1,0 +1,20 @@
+version: '3'
+services:
+  php_fpm:
+    build: ./php-fpm
+    volumes:
+      - ./www:/var/www/:rw
+    networks:
+      - backend-php
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/var/www:ro
+    networks:
+      - backend-php
+
+networks:
+  backend-php:
+    driver: "bridge"

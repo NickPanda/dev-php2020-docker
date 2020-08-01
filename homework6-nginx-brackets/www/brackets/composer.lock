@@ -1,0 +1,57 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "f0b2fef69fa43def6b086d9fed8a30ac",
+    "packages": [
+        {
+            "name": "nickpanda/dev2020_hometask6_brackets",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/NickPanda/dev-php2020-hw6-package_brackets.git",
+                "reference": "2d45cc8aca83b57e45db3f8d43561e4d3f052524"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/NickPanda/dev-php2020-hw6-package_brackets/zipball/2d45cc8aca83b57e45db3f8d43561e4d3f052524",
+                "reference": "2d45cc8aca83b57e45db3f8d43561e4d3f052524",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpDev2020HT6\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "NickPanda",
+                    "email": "nick@badasspanda.ru"
+                }
+            ],
+            "description": "Hometask Lib Brackets (with Test)",
+            "time": "2020-03-10T06:11:06+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
