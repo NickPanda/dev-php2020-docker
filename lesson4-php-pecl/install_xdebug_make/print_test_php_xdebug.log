@@ -1,0 +1,13 @@
+# cat test.php
+<?php
+$a = 5;
+
+$b = [$a, 2];
+$b
+[] = &$a;
+
+xdebug_debug_zval('a');
+xdebug_debug_zval('b');
+# php test.php
+a: (refcount=2, is_ref=1)=5
+b: (refcount=1, is_ref=0)=array (0 => (refcount=0, is_ref=0)=5, 1 => (refcount=0, is_ref=0)=2, 2 => (refcount=2, is_ref=1)=5)

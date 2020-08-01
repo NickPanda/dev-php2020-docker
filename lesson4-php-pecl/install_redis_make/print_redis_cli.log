@@ -1,0 +1,6 @@
+# redis-cli ping
+PONG
+# redis-cli set mykey somevalue
+OK
+# redis-cli get mykey
+"somevalue"
