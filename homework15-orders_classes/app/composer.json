@@ -1,0 +1,14 @@
+{
+  "name": "nickpanda/dev2020_homework15_order_classes",
+  "description": "Homework Order's Classes",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src"
+    }
+  },
+  "require": {
+    "php": "~7.4",
+    "vlucas/phpdotenv": "^4.1"
+  }
+}
