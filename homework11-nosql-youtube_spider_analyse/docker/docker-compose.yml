@@ -1,0 +1,47 @@
+version: '3'
+services:
+  php_fpm:
+    build: ./php-fpm
+    volumes:
+      - ../www:/var/www/:rw
+    networks:
+      - backend-php
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ../www:/var/www:ro
+    networks:
+      - backend-php
+
+  mongo:
+    env_file:
+      - mongo.env
+    image: mongo
+    container_name: 'mongo'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+    - '27017-27019:27017-27019'
+    links:
+      - php_fpm
+    networks:
+      - backend-php
+
+  redis:
+    container_name: 'redis'
+    image: redis
+    command: ["sh", "-c", "exec redis-server"]
+    ports:
+      - 6379:6379
+    links:
+      - php_fpm
+    networks:
+      - backend-php
+
+networks:
+  backend-php:
+    driver: "bridge"
