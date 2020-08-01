@@ -1,0 +1,89 @@
+version: '3'
+services:
+    # php_fpm
+    php_fpm_one:
+        build: 
+            context: ./php-fpm
+            args:
+               PHP_VERSION: 7.1
+        volumes:
+            - ./www:/var/www/:rw
+        networks:
+            - backend-php
+    php_fpm_two:
+        build: 
+            context: ./php-fpm
+            args:
+               PHP_VERSION: 7.2
+        volumes:
+            - ./www:/var/www/:rw
+        networks:
+            - backend-php
+    php_fpm_three:
+        build: 
+            context: ./php-fpm
+            args:
+               PHP_VERSION: 7.3
+        volumes:
+            - ./www:/var/www/:rw
+        networks:
+            - backend-php
+    php_fpm_four:
+        build: 
+            context: ./php-fpm
+            args:
+               PHP_VERSION: 7.4
+        volumes:
+            - ./www:/var/www/:rw
+        networks:
+            - backend-php
+  # nginx
+    nginx_base:
+        build: 
+            context: ./nginx
+            args:
+               NGINX_CONF: nginx_balance_base
+        ports:
+         - "80:80"
+        networks:
+         - backend-php
+    nginx_one:
+        build: 
+            context: ./nginx
+            args:
+               NGINX_CONF: nginx_balance_one
+        volumes:
+         - ./www:/var/www:ro
+        networks:
+         - backend-php
+    nginx_two:
+       build: 
+            context: ./nginx
+            args:
+               NGINX_CONF: nginx_balance_two
+       volumes:
+        - ./www:/var/www:ro
+       networks:
+        - backend-php
+    nginx_three:
+       build: 
+            context: ./nginx
+            args:
+               NGINX_CONF: nginx_balance_three
+       volumes:
+        - ./www:/var/www:ro
+       networks:
+        - backend-php
+    nginx_four:
+       build: 
+            context: ./nginx
+            args:
+               NGINX_CONF: nginx_balance_four
+       volumes:
+        - ./www:/var/www:ro
+       networks:
+        - backend-php
+        
+networks:
+  backend-php:
+    driver: "bridge"
