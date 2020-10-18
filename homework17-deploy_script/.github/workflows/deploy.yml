@@ -1,0 +1,36 @@
+name: DeployApp_actions
+
+on:
+  push:
+    branches: [ homework17-deploy_script ]
+  pull_request:
+    branches: [ homework17-deploy_script ]
+
+jobs:
+  deploy_app:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker Build
+      run: |
+        cd  ./homework17-deploy_script
+        docker-compose build
+        docker-compose down
+        docker-compose up -d
+
+    - name: composer update + Execute tests
+      run: |
+        composer update
+        vendor/bin/phpunit ./tests/
+
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@4.0
+      with:
+        switches: -avzr --delete --exclude="vendor" --exclude=".git"
+        path: ./
+        remote_path: /home/Otus
+        remote_host: localhost.ru
+        remote_user: otus
+        remote_key: PRIVATE_KEY
